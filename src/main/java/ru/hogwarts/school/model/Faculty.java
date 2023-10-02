@@ -2,7 +2,7 @@ package ru.hogwarts.school.model;
 
 import jakarta.persistence.*;
 
-import java.util.Collection;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -12,9 +12,10 @@ public class Faculty {
     private Long id;
     private String name;
     private String color;
+
+
     @OneToMany
-    @JoinColumn(name = "faculty_id")
-    private Collection<Student> students;
+    private List<Student> students;
 
 
     public Long getId() {
@@ -40,6 +41,15 @@ public class Faculty {
     public void setColor(String color) {
         this.color = color;
     }
+
+    public List<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(List<Student> students) {
+        this.students = students;
+    }
+
 
     @Override
     public boolean equals(Object o) {
