@@ -48,8 +48,9 @@ public class FacultyService {
 
     public Set<Faculty> getByColorOrNameIgnoreCase(String param) {
         Set<Faculty> result = new HashSet<>();
-        result.addAll(facultyRepository.findByColorIgnoreCase(param));
         result.addAll(facultyRepository.findByNameIgnoreCase(param));
+        result.addAll(facultyRepository.findByColorIgnoreCase(param));
+
         return result;
     }
     public List<Student> getStudentsByFacultyId(Long id) {

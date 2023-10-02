@@ -17,6 +17,8 @@ public class Student {
 
     private Faculty faculty;
 
+    public Student(long l, String first, int i) {
+    }
 
 
     public Long getId() {
