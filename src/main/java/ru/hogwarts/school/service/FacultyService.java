@@ -1,5 +1,6 @@
 package ru.hogwarts.school.service;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import ru.hogwarts.school.model.Faculty;
 import ru.hogwarts.school.repository.FacultyRepository;
@@ -39,5 +40,11 @@ public class FacultyService {
                 .stream()
                 .filter(it -> it.getColor().equals(color))
                 .collect(Collectors.toList());
+    }
+    public ResponseEntity<Faculty>  findFacultyByNameIgnoreCase(String name){
+        return ResponseEntity.ok(facultyRepository.findFacultyByNameIgnoreCase(name));
+    }
+    public ResponseEntity<Faculty>  findFacultyByColorIgnoreCase(String color){
+        return ResponseEntity.ok(facultyRepository.findFacultyByColorIgnoreCase(color));
     }
 }
