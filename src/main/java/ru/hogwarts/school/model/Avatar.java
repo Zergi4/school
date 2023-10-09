@@ -1,24 +1,32 @@
 package ru.hogwarts.school.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 
 import java.util.Arrays;
 import java.util.Objects;
 
+import static jakarta.persistence.GenerationType.IDENTITY;
+
 @Entity
 public class Avatar {
+
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = IDENTITY)
     private Long id;
+
     private String filePath;
+
     private long fileSize;
+
     private String mediaType;
+
+    @Lob
     private byte[] data;
     @OneToOne
-    Student student;
+    private Student student;
+
+    public Avatar() {
+    }
 
     public Long getId() {
         return id;
@@ -70,6 +78,7 @@ public class Avatar {
 
     @Override
     public boolean equals(Object o) {
+
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Avatar avatar = (Avatar) o;
