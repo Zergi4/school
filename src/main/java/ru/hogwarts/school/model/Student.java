@@ -1,6 +1,8 @@
 package ru.hogwarts.school.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+
 
 import java.util.Objects;
 @Entity
@@ -14,11 +16,18 @@ public class Student {
 
 
     @ManyToOne
-
+    @JsonIgnore
     private Faculty faculty;
 
-    public Student(long l, String first, int i) {
-
+    public Student(String name, int age) {
+        this.id = 0L;
+        this.name = name;
+        this.age = age;
+    }
+    public Student(Long id, String name, int age) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
     }
 
     public Student() {
@@ -76,6 +85,7 @@ public class Student {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", age=" + age +
+                ", faculty=" + faculty +
                 '}';
     }
 }

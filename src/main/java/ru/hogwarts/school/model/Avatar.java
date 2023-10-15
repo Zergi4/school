@@ -2,6 +2,7 @@ package ru.hogwarts.school.model;
 
 import jakarta.persistence.*;
 
+
 import java.util.Arrays;
 import java.util.Objects;
 
@@ -23,10 +24,10 @@ public class Avatar {
     @Lob
     private byte[] data;
     @OneToOne
-    private Student student;
+    @JoinColumn(name = "student_id")
+        private Student student;
 
-    public Avatar() {
-    }
+
 
     public Long getId() {
         return id;
